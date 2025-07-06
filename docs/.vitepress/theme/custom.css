@@ -1,0 +1,7 @@
+.vp-doc h1 + p + p {
+    margin-top: 3em;
+}
+
+.vp-doc [class*="language-"] code .diff.remove {
+    opacity: 1;
+}

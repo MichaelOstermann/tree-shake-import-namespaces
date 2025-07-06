@@ -1,0 +1,49 @@
+{
+    "name": "@monstermann/tree-shake-import-namespaces",
+    "type": "module",
+    "version": "0.0.0",
+    "description": "Tree-shake import namespaces with oxc.",
+    "author": "Michael Ostermann <michaelostermann@me.com>",
+    "license": "MIT",
+    "homepage": "https://MichaelOstermann.github.io/tree-shake-import-namespaces",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/MichaelOstermann/tree-shake-import-namespaces.git"
+    },
+    "bugs": {
+        "url": "https://github.com/MichaelOstermann/tree-shake-import-namespaces/issues"
+    },
+    "keywords": [],
+    "sideEffects": false,
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./dist/index.d.ts",
+                "default": "./dist/index.js"
+            },
+            "require": {
+                "types": "./dist/index.d.cts",
+                "default": "./dist/index.cjs"
+            }
+        }
+    },
+    "main": "./dist/index.js",
+    "module": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "bundle": "tsdown",
+        "release": "bun publish --access public"
+    },
+    "dependencies": {
+        "@jridgewell/remapping": "^2.3.4",
+        "@jridgewell/sourcemap-codec": "^1.5.4",
+        "astring": "^1.9.0",
+        "magic-string": "^0.30.17",
+        "oxc-parser": "^0.76.0",
+        "oxc-walker": "^0.3.0",
+        "picocolors": "^1.1.1"
+    }
+}

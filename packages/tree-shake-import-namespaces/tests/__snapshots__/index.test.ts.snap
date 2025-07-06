@@ -1,0 +1,248 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`babel-plugin-tree-shake-imports > Should create unique identifiers 1`] = `
+"import { bar as _bar1 } from "foo/bar";
+_bar1;
+const bar = true;
+const _bar = true;
+
+{
+  "version": 3,
+  "sources": [
+    "source.tsx"
+  ],
+  "sourcesContent": [
+    "import { Foo } from \\"foo\\";\\nFoo.bar;\\nconst bar = true;\\nconst _bar = true;"
+  ],
+  "names": [],
+  "mappings": "AAAA;AACA,KAAO;AACP,KAAK,CAAC,GAAG,CAAC,CAAC,CAAC,IAAI;AAChB,KAAK,CAAC,IAAI,CAAC,CAAC,CAAC,IAAI"
+}"
+`;
+
+exports[`babel-plugin-tree-shake-imports > Should create unique identifiers across namespaces 1`] = `
+"import { baz as _baz } from "foo/baz";
+import { baz as _baz1 } from "bar/baz";
+_baz;
+_baz1;
+
+{
+  "version": 3,
+  "sources": [
+    "source.tsx"
+  ],
+  "sourcesContent": [
+    "import { Foo } from \\"foo\\";\\nimport { Bar } from \\"bar\\";\\nFoo.baz;\\nBar.baz;"
+  ],
+  "names": [],
+  "mappings": "AAAA;AACA;AACA,IAAO;AACP,KAAO"
+}"
+`;
+
+exports[`babel-plugin-tree-shake-imports > Should create unique identifiers across scopes 1`] = `
+"import { bar as _bar1 } from "foo/bar";
+_bar1;
+const example = function (bar) {
+    _bar1;
+};
+const example2 = function (_bar) {
+    _bar1;  
+};
+
+{
+  "version": 3,
+  "sources": [
+    "source.tsx"
+  ],
+  "sourcesContent": [
+    "import { Foo } from \\"foo\\";\\nFoo.bar;\\nconst example = function (bar) {\\n    Foo.bar;\\n};\\nconst example2 = function (_bar) {\\n    Foo.bar;  \\n};"
+  ],
+  "names": [],
+  "mappings": "AAAA;AACA,KAAO;AACP,KAAK,CAAC,OAAO,CAAC,CAAC,CAAC,QAAQ,CAAC,CAAC,GAAG,CAAC,CAAC;AAC/B,CAAC,CAAC,CAAC,CAAC,KAAO;AACX,CAAC;AACD,KAAK,CAAC,QAAQ,CAAC,CAAC,CAAC,QAAQ,CAAC,CAAC,IAAI,CAAC,CAAC;AACjC,CAAC,CAAC,CAAC,CAAC,KAAO,CAAC,CAAC;AACb,CAAC"
+}"
+`;
+
+exports[`babel-plugin-tree-shake-imports > Should keep unused imports 1`] = `
+"import {Bar} from "foo";
+import { bar as _bar } from "foo/bar";
+
+_bar;
+
+{
+  "version": 3,
+  "sources": [
+    "source.tsx"
+  ],
+  "sourcesContent": [
+    "import { Foo, Bar } from \\"foo\\";\\nFoo.bar;"
+  ],
+  "names": [],
+  "mappings": "AAAA;;;AACA,IAAO"
+}"
+`;
+
+exports[`babel-plugin-tree-shake-imports > Should not tree-shake nested imports by default 1`] = `
+"import { bar as _bar } from "foo/bar";
+_bar.baz;
+
+{
+  "version": 3,
+  "sources": [
+    "source.tsx"
+  ],
+  "sourcesContent": [
+    "import { Foo } from \\"foo\\";\\nFoo.bar.baz;"
+  ],
+  "names": [],
+  "mappings": "AAAA;AACA,IAAO,CAAC,GAAG"
+}"
+`;
+
+exports[`babel-plugin-tree-shake-imports > Should not tree-shake when not desired 1`] = `
+"import { a as _a } from "a/a";
+import { B } from "b";
+_a;
+B.c;
+B.d;
+
+{
+  "version": 3,
+  "sources": [
+    "source.tsx"
+  ],
+  "sourcesContent": [
+    "import { A } from \\"a\\";\\nimport { B } from \\"b\\";\\nA.a;\\nB.c;\\nB.d;"
+  ],
+  "names": [],
+  "mappings": "AAAA;AACA,MAAM,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,IAAI,CAAC,CAAC,CAAC,CAAC;AACrB,EAAG;AACH,CAAC,CAAC,CAAC;AACH,CAAC,CAAC,CAAC"
+}"
+`;
+
+exports[`babel-plugin-tree-shake-imports > Should skip fishy properties 1`] = `""`;
+
+exports[`babel-plugin-tree-shake-imports > Should skip irrelevant references 1`] = `""`;
+
+exports[`babel-plugin-tree-shake-imports > Should transform JSX 1`] = `
+"import { Bar as _Bar } from "foo/Bar";
+const Component = (
+    <_Bar>
+    </_Bar>
+);
+
+{
+  "version": 3,
+  "sources": [
+    "source.tsx"
+  ],
+  "sourcesContent": [
+    "import { Foo } from \\"foo\\";\\nconst Component = (\\n    <Foo.Bar>\\n    </Foo.Bar>\\n);"
+  ],
+  "names": [],
+  "mappings": "AAAA;AACA,KAAK,CAAC,SAAS,CAAC,CAAC,CAAC;AAClB,CAAC,CAAC,CAAC,CAAC,CAAC,IAAO;AACZ,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,IAAO;AACb,CAAC"
+}"
+`;
+
+exports[`babel-plugin-tree-shake-imports > Should tree-shake aliased imports 1`] = `
+"import { bar as _bar } from "foo/bar";
+_bar;
+
+{
+  "version": 3,
+  "sources": [
+    "source.tsx"
+  ],
+  "sourcesContent": [
+    "import { Foo as Bar } from \\"foo\\";\\nBar.bar;"
+  ],
+  "names": [],
+  "mappings": "AAAA;AACA,IAAO"
+}"
+`;
+
+exports[`babel-plugin-tree-shake-imports > Should tree-shake default imports 1`] = `
+"import { bar as _bar } from "foo/bar";
+_bar;
+
+{
+  "version": 3,
+  "sources": [
+    "source.tsx"
+  ],
+  "sourcesContent": [
+    "import Foo from \\"foo\\";\\nFoo.bar;"
+  ],
+  "names": [],
+  "mappings": "AAAA;AACA,IAAO"
+}"
+`;
+
+exports[`babel-plugin-tree-shake-imports > Should tree-shake multiple references 1`] = `
+"import { bar as _bar } from "foo/bar";
+import { baz as _baz } from "foo/baz";
+_bar;
+_bar;
+_baz;
+_baz;
+
+{
+  "version": 3,
+  "sources": [
+    "source.tsx"
+  ],
+  "sourcesContent": [
+    "import { Foo } from \\"foo\\";\\nFoo.bar;\\nFoo.bar;\\nFoo.baz;\\nFoo.baz;"
+  ],
+  "names": [],
+  "mappings": "AAAA;AAAA;AACA,IAAO;AACP,IAAO;AACP,IAAO;AACP,IAAO"
+}"
+`;
+
+exports[`babel-plugin-tree-shake-imports > Should tree-shake named imports 1`] = `
+"import { bar as _bar } from "foo/bar";
+_bar;
+
+{
+  "version": 3,
+  "sources": [
+    "source.tsx"
+  ],
+  "sourcesContent": [
+    "import { Foo } from \\"foo\\";\\nFoo.bar;"
+  ],
+  "names": [],
+  "mappings": "AAAA;AACA,IAAO"
+}"
+`;
+
+exports[`babel-plugin-tree-shake-imports > Should tree-shake nested imports when requested 1`] = `
+"import { baz as _baz } from "foo/bar/baz";
+_baz;
+
+{
+  "version": 3,
+  "sources": [
+    "source.tsx"
+  ],
+  "sourcesContent": [
+    "import { Foo } from \\"foo\\";\\nFoo.bar.baz;"
+  ],
+  "names": [],
+  "mappings": "AAAA;AACA,IAAW"
+}"
+`;
+
+exports[`babel-plugin-tree-shake-imports > Should tree-shake wildcard imports 1`] = `
+"import { bar as _bar } from "foo/bar";
+_bar;
+
+{
+  "version": 3,
+  "sources": [
+    "source.tsx"
+  ],
+  "sourcesContent": [
+    "import * as Foo from \\"foo\\";\\nFoo.bar;"
+  ],
+  "names": [],
+  "mappings": "AAAA;AACA,IAAO"
+}"
+`;

@@ -183,8 +183,12 @@ interface TreeShakeImportData {
     // The path of the file being transformed.
     filePath: string;
 
-    // The generated identifier that should be used for the new import.
+    // The generated alias name that is safe to use for the new import.
     importAlias: string;
+
+    // Bindings that are already in use, useful if
+    // you want to create your own import aliases.
+    scope: Set<string>;
 
     // The imported module name, if available:
     // import { Foo } from "foo" → "Foo"
@@ -330,8 +334,12 @@ interface TreeShakeImportData {
     // The path of the file being transformed.
     filePath: string;
 
-    // The generated identifier that should be used for the new import.
+    // The generated alias name that is safe to use for the new import.
     importAlias: string;
+
+    // Bindings that are already in use, useful if
+    // you want to create your own import aliases.
+    scope: Set<string>;
 
     // The imported module name, if available:
     // import { Foo } from "foo" → "Foo"

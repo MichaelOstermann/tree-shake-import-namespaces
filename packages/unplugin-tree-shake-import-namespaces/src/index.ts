@@ -4,9 +4,11 @@ import { createUnplugin } from "unplugin"
 import { createFilter } from "unplugin-utils"
 
 export default createUnplugin<Options>(({ debug, enforce, exclude, include, nested, resolveImport }) => {
-    const shouldDebug = typeof debug === "boolean"
-        ? () => debug
-        : createFilter(debug)
+    const shouldDebug = debug === undefined
+        ? () => false
+        : typeof debug === "boolean"
+            ? () => debug
+            : createFilter(debug)
 
     return {
         enforce,

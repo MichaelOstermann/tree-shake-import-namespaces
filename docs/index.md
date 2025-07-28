@@ -119,9 +119,9 @@ And alternatively you can access all used bindings to generate your own if you'd
 
 ```ts
 treeshake(code, "source.ts", {
-    resolveImport({ scopes, propertyName, importPath }) {
+    resolveImport({ scope, propertyName, importPath }) {
         let name = propertyName;
-        while (scopes.has(name)) name += "$";
+        while (scope.has(name)) name += "$";
         // import { email as email$ } from "#utils/email"
         return `import { ${propertyName} as ${name} } from "${importPath}/${propertyName}";`;
     },
@@ -226,8 +226,7 @@ treeshake(code, filePath, {
         return null;
         return undefined;
 
-        // Tree-shake this import by returning an import declaration
-        // that should be injected - make sure you use `importAlias`!
+        // Tree-shake this import by returning an import declaration that should be injected:
         return `
             import { ${propertyName} as ${importAlias} }
             from "${importPath}/${propertyName}";
@@ -388,8 +387,7 @@ treeshake({
         return null;
         return undefined;
 
-        // Tree-shake this import by returning an import declaration
-        // that should be injected - make sure you use `importAlias`!
+        // Tree-shake this import by returning an import declaration that should be injected:
         return `
             import { ${propertyName} as ${importAlias} }
             from "${importPath}/${propertyName}";

@@ -3,8 +3,8 @@
   "workspaces": {
     "": {
       "devDependencies": {
-        "@monstermann/vitepress-theme": "^0.1.0",
         "@monstermann/eslint-config": "^0.4.0",
+        "@monstermann/vitepress-theme": "^0.2.0",
         "@sindresorhus/tsconfig": "^7.0.0",
         "bumpp": "^10.2.0",
         "redent": "^4.0.0",
@@ -265,7 +265,7 @@
 
     "@monstermann/unplugin-tree-shake-import-namespaces": ["@monstermann/unplugin-tree-shake-import-namespaces@workspace:packages/unplugin-tree-shake-import-namespaces", { "dependencies": { "@monstermann/tree-shake-import-namespaces": "packages/tree-shake-import-namespaces", "unplugin": "^2.3.4", "unplugin-utils": "^0.2.4" } }],
 
-    "@monstermann/vitepress-theme": ["@monstermann/vitepress-theme@0.1.0", "", {}, "sha512-T1hIFdx05Sfgz0TLbX4lLBRjS5PuSuWjGUyfCwYj1WwnUiGH/ZXoD3UT1j4wVTwyvsKCvpTAk26EZS2d5Opr6A=="],
+    "@monstermann/vitepress-theme": ["@monstermann/vitepress-theme@0.2.0", "", {}, "sha512-/2iV2HTsgGFZffl15XvjaQF+N/2rRiLvW/xc3NtGAKU6g+Rnb9v7Era9OecD7xeu3CwD97vEc1eZrqR/auCB+A=="],
 
     "@napi-rs/wasm-runtime": ["@napi-rs/wasm-runtime@0.2.11", "", { "dependencies": { "@emnapi/core": "^1.4.3", "@emnapi/runtime": "^1.4.3", "@tybys/wasm-util": "^0.9.0" } }, "sha512-9DPkXtvHydrcOsopiYpUgPHpmj0HWZKMUnL2dZqpvC42lsratuBG06V5ipyno0fUek5VlFsNQ+AcFATSrJXgMA=="],
 

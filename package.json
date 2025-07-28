@@ -9,8 +9,8 @@
         "docs:build": "vitepress build docs"
     },
     "devDependencies": {
-        "@monstermann/eslint-config": "0.3.0",
         "@monstermann/vitepress-theme": "^0.1.0",
+        "@monstermann/eslint-config": "^0.4.0",
         "@sindresorhus/tsconfig": "^7.0.0",
         "bumpp": "^10.2.0",
         "redent": "^4.0.0",

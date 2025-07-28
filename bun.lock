@@ -3,8 +3,8 @@
   "workspaces": {
     "": {
       "devDependencies": {
-        "@monstermann/eslint-config": "0.3.0",
         "@monstermann/vitepress-theme": "^0.1.0",
+        "@monstermann/eslint-config": "^0.4.0",
         "@sindresorhus/tsconfig": "^7.0.0",
         "bumpp": "^10.2.0",
         "redent": "^4.0.0",
@@ -259,7 +259,7 @@
 
     "@jridgewell/trace-mapping": ["@jridgewell/trace-mapping@0.3.29", "", { "dependencies": { "@jridgewell/resolve-uri": "^3.1.0", "@jridgewell/sourcemap-codec": "^1.4.14" } }, "sha512-uw6guiW/gcAGPDhLmd77/6lW8QLeiV5RUTsAX46Db6oLhGaVj4lhnPwb184s1bkc8kdVg/+h988dro8GRDpmYQ=="],
 
-    "@monstermann/eslint-config": ["@monstermann/eslint-config@0.3.0", "", { "dependencies": { "@eslint-community/eslint-plugin-eslint-comments": "^4.5.0", "@eslint-react/eslint-plugin": "^1.49.0", "@stylistic/eslint-plugin": "^4.2.0", "@typescript-eslint/eslint-plugin": "^8.32.1", "@typescript-eslint/parser": "^8.32.1", "eslint": "^9.26.0", "eslint-plugin-format": "^1.0.1", "eslint-plugin-import-x": "^4.11.1", "eslint-plugin-jsdoc": "^50.6.17", "eslint-plugin-jsonc": "^2.20.0", "eslint-plugin-n": "^17.18.0", "eslint-plugin-perfectionist": "^4.13.0", "eslint-plugin-react-compiler": "^19.0.0-beta-e552027-20250112", "eslint-plugin-react-hooks": "^5.2.0", "eslint-plugin-react-refresh": "^0.4.20", "eslint-plugin-regexp": "^2.7.0", "eslint-plugin-tailwindcss": "^3.18.0", "eslint-plugin-unicorn": "^59.0.1", "eslint-plugin-unused-imports": "^4.1.4", "globals": "^16.1.0", "jsonc-eslint-parser": "^2.4.0", "prettier": "^3.5.3" } }, "sha512-xGV0tQ0ibA3MVTm0vIFCpMiKdQiuJ6MnNwKjmxGey8s4tE2QR5qpwSHwoacrkDyTQTErfs8/pyL2k7MU916UvA=="],
+    "@monstermann/eslint-config": ["@monstermann/eslint-config@0.4.0", "", { "dependencies": { "@eslint-community/eslint-plugin-eslint-comments": "^4.5.0", "@eslint-react/eslint-plugin": "^1.49.0", "@stylistic/eslint-plugin": "^4.2.0", "@typescript-eslint/eslint-plugin": "^8.32.1", "@typescript-eslint/parser": "^8.32.1", "eslint": "^9.26.0", "eslint-plugin-format": "^1.0.1", "eslint-plugin-import-x": "^4.11.1", "eslint-plugin-jsdoc": "^50.6.17", "eslint-plugin-jsonc": "^2.20.0", "eslint-plugin-n": "^17.18.0", "eslint-plugin-perfectionist": "^4.13.0", "eslint-plugin-react-compiler": "^19.0.0-beta-e552027-20250112", "eslint-plugin-react-hooks": "^5.2.0", "eslint-plugin-react-refresh": "^0.4.20", "eslint-plugin-regexp": "^2.7.0", "eslint-plugin-tailwindcss": "^3.18.0", "eslint-plugin-unicorn": "^59.0.1", "eslint-plugin-unused-imports": "^4.1.4", "globals": "^16.1.0", "jsonc-eslint-parser": "^2.4.0", "prettier": "^3.5.3" } }, "sha512-LNqzG8z7OgsfEtkk6QKE/5fC9myFdwBhKFl782XULGjQ4Mq9RunWy1pE9jN1VvRavAqjjnY0X3dO9BPi6eVRdg=="],
 
     "@monstermann/tree-shake-import-namespaces": ["@monstermann/tree-shake-import-namespaces@workspace:packages/tree-shake-import-namespaces", { "dependencies": { "@jridgewell/remapping": "^2.3.4", "@jridgewell/sourcemap-codec": "^1.5.4", "astring": "^1.9.0", "magic-string": "^0.30.17", "oxc-parser": "^0.76.0", "oxc-walker": "^0.3.0", "picocolors": "^1.1.1" } }],
 

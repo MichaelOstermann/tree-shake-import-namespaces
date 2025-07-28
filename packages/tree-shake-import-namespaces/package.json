@@ -1,7 +1,7 @@
 {
     "name": "@monstermann/tree-shake-import-namespaces",
     "type": "module",
-    "version": "0.0.0",
+    "version": "0.0.1",
     "description": "Tree-shake import namespaces with oxc.",
     "author": "Michael Ostermann <michaelostermann@me.com>",
     "license": "MIT",

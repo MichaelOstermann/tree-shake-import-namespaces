@@ -15,5 +15,5 @@ export interface TreeShakeImportResolver {
 export interface TreeShakeImportsOptions {
     debug?: boolean
     nested?: boolean
-    resolveImport: TreeShakeImportResolver
+    resolve: TreeShakeImportResolver | TreeShakeImportResolver[]
 }

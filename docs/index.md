@@ -44,7 +44,7 @@ This information will be forwarded to a function provided by you:
 
 ```ts
 treeshake(code, "source.ts", {
-    resolveImport({
+    resolve({
         filePath = "source.ts",
         importName = "User",
         importPath = "#utils",
@@ -58,7 +58,7 @@ You can use this to declare a new import statement, for example:
 
 ```ts
 treeshake(code, "source.ts", {
-    resolveImport({ propertyName, importPath }) {
+    resolve({ propertyName, importPath }) {
         // import { email } from "#utils/email"
         return `import { ${propertyName} } from "${importPath}/${propertyName}";`;
     },
@@ -103,7 +103,7 @@ The plugin will generate an import name (`importAlias`) that is ensured to be un
 
 ```ts
 treeshake(code, "source.ts", {
-    resolveImport({ importAlias, propertyName, importPath }) {
+    resolve({ importAlias, propertyName, importPath }) {
         // import { email as _email } from "#utils/email"
         return `import { ${propertyName} as ${importAlias} } from "${importPath}/${propertyName}";`;
     },
@@ -119,7 +119,7 @@ And alternatively you can access all used bindings to generate your own if you'd
 
 ```ts
 treeshake(code, "source.ts", {
-    resolveImport({ scope, propertyName, importPath }) {
+    resolve({ scope, propertyName, importPath }) {
         let name = propertyName;
         while (scope.has(name)) name += "$";
         // import { email as email$ } from "#utils/email"
@@ -220,7 +220,8 @@ treeshake(code, filePath, {
     // Enable destructuring nested properties if needed:
     nested?: true,
 
-    resolveImport(importData: TreeShakeImportData) {
+    resolve: TreeShakeImportResolver | TreeShakeImportResolver[],
+    resolve(importData: TreeShakeImportData) {
         // Skip tree-shaking this import:
         return false;
         return null;
@@ -381,7 +382,8 @@ treeshake({
     // Enforce plugin order for bundlers that support this:
     enforce?: "post" | "pre" | undefined,
 
-    resolveImport(importData: TreeShakeImportData) {
+    resolve: TreeShakeImportResolver | TreeShakeImportResolver[],
+    resolve(importData: TreeShakeImportData) {
         // Skip tree-shaking this import:
         return false;
         return null;

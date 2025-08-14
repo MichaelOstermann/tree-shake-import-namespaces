@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import type { ImportDeclarationSpecifier } from "oxc-parser"
-import type { TreeShakeImportData } from "../types"
+import type { TreeShakeImportData, TreeShakeImportResolver } from "../types"
 import type { Context, ImportSpecifierMetadata } from "./types"
 import { parseAndWalk } from "oxc-walker"
 import pc from "picocolors"
@@ -43,7 +43,12 @@ function resolveMemberExpressions(
             console.log(pc.magenta("  Member:"), ctx.code.slice(memberExpressionSample.start, memberExpressionSample.end))
         }
 
-        const resolvedImport = ctx.resolveImport(importData)
+        let resolvedImport: ReturnType<TreeShakeImportResolver>
+
+        for (const resolve of ctx.resolvers) {
+            resolvedImport = resolve(importData)
+            if (resolvedImport) break
+        }
 
         if (ctx.debug) {
             console.log(pc.magenta("  Result:"), resolvedImport)

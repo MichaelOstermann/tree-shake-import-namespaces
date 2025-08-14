@@ -7,5 +7,5 @@ export interface Options {
     exclude?: FilterPattern
     include?: FilterPattern
     nested?: boolean
-    resolveImport: TreeShakeImportResolver
+    resolve: TreeShakeImportResolver | TreeShakeImportResolver[]
 }

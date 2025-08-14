@@ -16,7 +16,7 @@ export function transform(
     code: string,
     filePath: string,
     debug: boolean | undefined,
-    resolveImport: TreeShakeImportResolver,
+    resolvers: TreeShakeImportResolver[],
 ): MagicString {
     if (debug) {
         const text = `Transforming: ${filePath}`
@@ -33,7 +33,7 @@ export function transform(
         importDeclarations: new Set<ImportDeclaration>(),
         importSpecifiers: new Map<ImportDeclarationSpecifier, ImportSpecifierMetadata>(),
         ms: new MagicString(code, { filename: filePath }),
-        resolveImport,
+        resolvers,
         scopeTracker: new ScopeTracker({ preserveExitedScopes: true }),
     }
 

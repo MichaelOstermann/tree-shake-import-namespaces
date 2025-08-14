@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest"
-import { defaultOptions, expectSnapshot } from "./helpers"
+import { defaultResolver, expectSnapshot } from "./helpers"
 
 describe("babel-plugin-tree-shake-imports", () => {
     it("Should tree-shake named imports", () => {
@@ -7,7 +7,7 @@ describe("babel-plugin-tree-shake-imports", () => {
             import { Foo } from "foo";
             Foo.bar;
         `, {
-            resolveImport(data) {
+            resolve(data) {
                 expect(data).toEqual({
                     filePath: "source.tsx",
                     importAlias: "_bar",
@@ -17,7 +17,7 @@ describe("babel-plugin-tree-shake-imports", () => {
                     propertyName: "bar",
                     scope: new Set(["Foo"]),
                 })
-                return defaultOptions.resolveImport(data)
+                return defaultResolver(data)
             },
         })
     })
@@ -27,7 +27,7 @@ describe("babel-plugin-tree-shake-imports", () => {
             import { Foo as Bar } from "foo";
             Bar.bar;
         `, {
-            resolveImport(data) {
+            resolve(data) {
                 expect(data).toEqual({
                     filePath: "source.tsx",
                     importAlias: "_bar",
@@ -37,7 +37,7 @@ describe("babel-plugin-tree-shake-imports", () => {
                     propertyName: "bar",
                     scope: new Set(["Bar"]),
                 })
-                return defaultOptions.resolveImport(data)
+                return defaultResolver(data)
             },
         })
     })
@@ -47,7 +47,7 @@ describe("babel-plugin-tree-shake-imports", () => {
             import Foo from "foo";
             Foo.bar;
         `, {
-            resolveImport(data) {
+            resolve(data) {
                 expect(data).toEqual({
                     filePath: "source.tsx",
                     importAlias: "_bar",
@@ -57,7 +57,7 @@ describe("babel-plugin-tree-shake-imports", () => {
                     propertyName: "bar",
                     scope: new Set(["Foo"]),
                 })
-                return defaultOptions.resolveImport(data)
+                return defaultResolver(data)
             },
         })
     })
@@ -67,7 +67,7 @@ describe("babel-plugin-tree-shake-imports", () => {
             import * as Foo from "foo";
             Foo.bar;
         `, {
-            resolveImport(data) {
+            resolve(data) {
                 expect(data).toEqual({
                     filePath: "source.tsx",
                     importAlias: "_bar",
@@ -77,7 +77,7 @@ describe("babel-plugin-tree-shake-imports", () => {
                     propertyName: "bar",
                     scope: new Set(["Foo"]),
                 })
-                return defaultOptions.resolveImport(data)
+                return defaultResolver(data)
             },
         })
     })
@@ -90,7 +90,7 @@ describe("babel-plugin-tree-shake-imports", () => {
                 </Foo.Bar>
             );
         `, {
-            resolveImport(data) {
+            resolve(data) {
                 expect(data).toEqual({
                     filePath: "source.tsx",
                     importAlias: "_Bar",
@@ -100,7 +100,7 @@ describe("babel-plugin-tree-shake-imports", () => {
                     propertyName: "Bar",
                     scope: new Set(["Foo", "Component"]),
                 })
-                return defaultOptions.resolveImport(data)
+                return defaultResolver(data)
             },
         })
     })
@@ -127,8 +127,8 @@ describe("babel-plugin-tree-shake-imports", () => {
             import { Foo } from "foo";
             Foo.bar.baz;
         `, {
-            ...defaultOptions,
             nested: true,
+            resolve: defaultResolver,
         })
     })
 
@@ -140,9 +140,9 @@ describe("babel-plugin-tree-shake-imports", () => {
             B.c;
             B.d;
         `, {
-            resolveImport(data) {
+            resolve(data) {
                 if (data.importName === "B" && data.propertyName === "d") return
-                return defaultOptions.resolveImport(data)
+                return defaultResolver(data)
             },
         })
     })

@@ -23,6 +23,6 @@ export interface Context {
     importDeclarations: Set<ImportDeclaration>
     importSpecifiers: Map<ImportDeclarationSpecifier, ImportSpecifierMetadata>
     ms: MagicString
-    resolveImport: TreeShakeImportResolver
+    resolvers: TreeShakeImportResolver[]
     scopeTracker: ScopeTracker
 }

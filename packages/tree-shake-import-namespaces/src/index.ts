@@ -8,12 +8,13 @@ export * from "./types"
 export default function (
     code: string,
     filePath: string,
-    { debug, nested, resolveImport }: TreeShakeImportsOptions,
+    { debug, nested, resolve }: TreeShakeImportsOptions,
 ): {
     code: string
     map: SourceMap
 } | undefined {
-    let lastRun = transform(code, filePath, debug, resolveImport)
+    const resolvers = Array.isArray(resolve) ? resolve : [resolve]
+    let lastRun = transform(code, filePath, debug, resolvers)
 
     if (!lastRun.hasChanged()) return
 
@@ -33,7 +34,7 @@ export default function (
     const runs = [lastRun]
 
     while (true) {
-        const nextRun = transform(lastRun.toString(), filePath, debug, resolveImport)
+        const nextRun = transform(lastRun.toString(), filePath, debug, resolvers)
         if (!nextRun.hasChanged()) break
         lastRun = nextRun
         // Collect all runs for the purpose of combining sourcemaps.

@@ -9,7 +9,7 @@ export interface TreeShakeImportData {
 }
 
 export interface TreeShakeImportResolver {
-    (importData: TreeShakeImportData): string | null | undefined | false
+    (importData: TreeShakeImportData): string | null | undefined | false | void
 }
 
 export interface TreeShakeImportsOptions {

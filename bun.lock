@@ -18,7 +18,7 @@
     },
     "packages/tree-shake-import-namespaces": {
       "name": "@monstermann/tree-shake-import-namespaces",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "dependencies": {
         "@jridgewell/remapping": "^2.3.4",
         "@jridgewell/sourcemap-codec": "^1.5.4",
@@ -31,7 +31,7 @@
     },
     "packages/unplugin-tree-shake-import-namespaces": {
       "name": "@monstermann/unplugin-tree-shake-import-namespaces",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "dependencies": {
         "@monstermann/tree-shake-import-namespaces": "workspace:*",
         "unplugin": "^2.3.4",

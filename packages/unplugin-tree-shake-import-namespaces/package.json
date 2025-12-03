@@ -118,6 +118,6 @@
     "dependencies": {
         "@monstermann/tree-shake-import-namespaces": "workspace:*",
         "unplugin": "^2.3.4",
-        "unplugin-utils": "^0.2.4"
+        "unplugin-utils": "^0.3.0"
     }
 }

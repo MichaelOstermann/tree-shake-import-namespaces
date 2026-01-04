@@ -15,7 +15,7 @@ describe("babel-plugin-tree-shake-imports", () => {
                     importPath: "foo",
                     localName: "Foo",
                     propertyName: "bar",
-                    scope: new Set(["Foo"]),
+                    scope: new Set(["Foo", "bar"]),
                 })
                 return defaultResolver(data)
             },
@@ -35,7 +35,7 @@ describe("babel-plugin-tree-shake-imports", () => {
                     importPath: "foo",
                     localName: "Bar",
                     propertyName: "bar",
-                    scope: new Set(["Bar"]),
+                    scope: new Set(["Foo", "Bar", "bar"]),
                 })
                 return defaultResolver(data)
             },
@@ -55,7 +55,7 @@ describe("babel-plugin-tree-shake-imports", () => {
                     importPath: "foo",
                     localName: "Foo",
                     propertyName: "bar",
-                    scope: new Set(["Foo"]),
+                    scope: new Set(["Foo", "bar"]),
                 })
                 return defaultResolver(data)
             },
@@ -75,7 +75,7 @@ describe("babel-plugin-tree-shake-imports", () => {
                     importPath: "foo",
                     localName: "Foo",
                     propertyName: "bar",
-                    scope: new Set(["Foo"]),
+                    scope: new Set(["Foo", "bar"]),
                 })
                 return defaultResolver(data)
             },

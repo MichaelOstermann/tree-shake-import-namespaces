@@ -1,7 +1,7 @@
 import type MagicString from "magic-string"
 import type { ImportDeclaration, ImportDeclarationSpecifier, JSXMemberExpression, MemberExpression } from "oxc-parser"
+import type { ScopeTracker } from "oxc-walker"
 import type { TreeShakeImportResolver } from "../types"
-import type { ScopeTracker } from "./ScopeTracker"
 
 export interface ImportSpecifierMetadata {
     importDeclaration: ImportDeclaration
@@ -12,7 +12,6 @@ export interface ImportSpecifierMetadata {
     properties: Map<string, {
         importAlias: string
         memberExpressions: Set<MemberExpression | JSXMemberExpression>
-        scopes: Set<string>
     }>
 }
 
@@ -20,6 +19,7 @@ export interface Context {
     code: string
     debug: boolean | undefined
     filePath: string
+    identifiers: Set<string>
     importDeclarations: Set<ImportDeclaration>
     importSpecifiers: Map<ImportDeclarationSpecifier, ImportSpecifierMetadata>
     ms: MagicString

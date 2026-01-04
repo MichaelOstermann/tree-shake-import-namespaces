@@ -18,21 +18,18 @@ export function collectMember(ctx: Context, node: MemberExpression | JSXMemberEx
     if (!isIdentifier(propertyNode)) return void ctx.importSpecifiers.delete(importSpecifier)
 
     // Register this MemberExpression in its associated ImportSpecifier, we need to collect everything else first
-    // and then come back to this - we can not generate imports already because we need to be aware of all scopes
+    // and then come back to this - we can not generate imports already because we need to be aware of all identifiers
     // first before we can start generating identifiers.
 
-    const scope = ctx.scopeTracker.getCurrentScope()
     const property = importMetadata.properties.get(propertyNode.name)
 
     if (property) {
         property.memberExpressions.add(node)
-        property.scopes.add(scope)
     }
     else {
         importMetadata.properties.set(propertyNode.name, {
             importAlias: "",
             memberExpressions: new Set([node]),
-            scopes: new Set([scope]),
         })
     }
 }

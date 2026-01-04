@@ -5,6 +5,15 @@ import type { Context, ImportSpecifierMetadata } from "./types"
 import { parseAndWalk } from "oxc-walker"
 import pc from "picocolors"
 
+function generateImportAlias(ctx: Context, name: string): string {
+    let counter = 0
+    let result = `_${name}${counter || ""}`
+    while (ctx.identifiers.has(result)) {
+        result = `_${name}${++counter}`
+    }
+    return result
+}
+
 export function resolveImports(ctx: Context): void {
     for (const [importSpecifier, importMetadata] of ctx.importSpecifiers) {
         // We have not found any MemberExpressions associated with this import, ignore this.
@@ -25,14 +34,12 @@ function resolveMemberExpressions(
     for (const [propertyName, property] of importMetadata.properties) {
         const importData: TreeShakeImportData = {
             filePath: ctx.filePath,
-            importAlias: ctx.scopeTracker.generateImportAlias(property.scopes, propertyName),
+            importAlias: generateImportAlias(ctx, propertyName),
             importName: importMetadata.importName,
             importPath: importMetadata.importPath,
             localName: importMetadata.localName,
             propertyName,
-            get scope() {
-                return ctx.scopeTracker.getUsedIdentifiers(property.scopes)
-            },
+            scope: ctx.identifiers,
         }
 
         if (ctx.debug) {
@@ -60,7 +67,7 @@ function resolveMemberExpressions(
         }
 
         property.importAlias = getImportAliasName(resolvedImport)
-        ctx.scopeTracker.reportGeneratedIdentifer(property.importAlias)
+        ctx.identifiers.add(property.importAlias)
 
         importMetadata.newImports.push(resolvedImport)
     }

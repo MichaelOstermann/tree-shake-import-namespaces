@@ -1,3 +1,6 @@
+> [!WARNING]
+> This package is no longer maintained. It was replaced by [`@monstermann/barrels-treeshake`](https://github.com/MichaelOstermann/barrels).
+
 <div align="center">
 
 <h1>tree-shake-import-namespaces</h1>
